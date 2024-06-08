@@ -1,0 +1,38 @@
+<form>
+<div class="mb-3">
+    <label for="name" class="form-label">Nom complet</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="utilisateur.nom" name="name">
+
+</div>
+
+<div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email">
+</div>
+<div class="mb-3">
+    <label for="password" class="form-label">Mot de passe</label>
+    <input type="password" class="form-control" id="password" [(ngModel)]="utilisateur.password" name="password">
+</div>
+<div class="mb-3">
+    <label class="form-label">role</label>
+    <select multiple class="form-select" [(ngModel)]="utilisateur.roles" name="role">
+        <option value="ADMIN_ROLES">ADMIN</option>
+        <option value="USER_ROLES">USER</option>
+    </select>
+     
+    
+</div>
+<div *ngIf="utilisateur.roles=='ADMIN_ROLES'">
+    <div class="form-label">
+        Identifiant secret
+    </div>
+    
+        <input placeholder="identifiant" type="text" class="form-control" [(ngModel)]="identifiant" name="secretId">
+    
+
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+</form>

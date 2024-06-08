@@ -1,0 +1,83 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom complet</label>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="utilisateur.nom" name="name">
+                
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="utilisateur.password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">role</label>
+                    <select multiple class="form-select" [(ngModel)]="utilisateur.roles" name="role">
+                        <option value="ADMIN_ROLES">ADMIN</option>
+                        <option value="USER_ROLES">USER</option>
+                    </select>
+                     
+                    
+                </div>
+                <div *ngIf="utilisateur.roles=='ADMIN_ROLES'">
+                    <div class="form-label">
+                        Identifiant secret
+                    </div>
+                    
+                        <input placeholder="identifiant" type="text" class="form-control" [(ngModel)]="identifiant" name="secretId">
+                    
+                
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                
+                
+                
+                </form>
+        </div>
+        <div class="modal-footer">
+       
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom complet</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let utilisateur of utilisateurs">
+            <td>{{utilisateur.id}}</td>
+            <td>{{utilisateur.nom}}</td>
+            <td>{{utilisateur.email}}</td>
+            <td>{{utilisateur.roles}}</td>
+            <td>
+                <button class="btn btn-primary">Modifier</button>
+                <button class="btn btn-danger">Supprimer</button>
+            </td>
+        </tr>
+
+  </table>
