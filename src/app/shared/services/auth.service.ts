@@ -6,24 +6,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private authUrl = 'http://localhost:8080/api/auth'; // Adjust the URL to your backend
-
-  constructor(private http: HttpClient) { }
-
-  login(credentials: { username: string, password: string }): Observable<any> {
-    return this.http.post<any>(`${this.authUrl}/login`, credentials);
+  apiUrl="http://localhost:8080/utilisateurs/login"
+  constructor(private http:HttpClient) { }
+  login(credentials:{userName:string,password:string}):Observable<any>{
+    return this.http.post<any>(`${this.apiUrl}`,credentials);
   }
-
-  // Add methods to store, retrieve and remove JWT token
-  saveToken(token: string): void {
-    localStorage.setItem('jwtToken', token);
+  saveToken(token:string){
+    localStorage.setItem('jwtToken',token);
   }
-
-  getToken(): string | null {
+  getToken(){
     return localStorage.getItem('jwtToken');
   }
-
-  removeToken(): void {
+  removeToken(){
     localStorage.removeItem('jwtToken');
+  }
+  saveUserRoles(roles:string[])
+  {
+    localStorage.setItem('userRoles',JSON.stringify(roles));
+  }
+  getUserRoles():string[]{
+   const roles= localStorage.getItem('userRoles');
+    return roles?JSON.parse(roles):[];
   }
 }
