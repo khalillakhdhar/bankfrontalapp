@@ -8,4 +8,9 @@
  N.B dans comptes et transaction tout dépend de l'id du client choisit
  -une page transaction avec toute les transactions possibles
  - créer et importer un menu à l'admin
+
+ # user: 
+ profile et menu du user
+ accueil avec choix des compte 
+ voir le solde et créer et voir transaction du user
  
