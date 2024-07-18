@@ -17,7 +17,7 @@ state: RouterStateSnapshot):boolean
     const expectedRoles=next.data['roles'];
     if(!isAuthenticated|| (expectedRoles && !roles.some(r=>expectedRoles.includes(r))))
     {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth']);
       return false;
     }
     return true;
