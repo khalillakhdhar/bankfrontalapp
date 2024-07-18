@@ -16,7 +16,7 @@ export class RegisterComponent {
    // this.user.profile={} as Profile;
    localStorage.clear();
     this.user.etat="actif";
-    this.user.roles="USER_ROLES"
+  //  this.user.roles="USER_ROLES"
   }
 
   onSubmit() {
